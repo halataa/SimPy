@@ -4,7 +4,7 @@ import csv
 from bs4 import BeautifulSoup as BS
 
 startPage = 1
-endPage = 300
+endPage = 500 # 500 recomended
 
 
 NPDict = dict()
@@ -19,8 +19,7 @@ for i in range(startPage, endPage+1):
     NPList = list()
     Nlist = list()
     Plist = list()
-    r = requests.get(
-        'https://www.rond.ir/SearchSim/Mci/912?page=%s&StateId=0&CityId=0&SimOrderBy=Update&ItemPerPage=120' % (i))
+    r = requests.get('https://www.rond.ir/SearchSim/Mci/912?page=%s&StateId=0&CityId=0&SimOrderBy=Update&ItemPerPage=120' % (i))
     print('Page : %s' % i)
     soup = BS(r.text, 'html.parser')
     Ns = soup.findAll('a', attrs={'class': 't-link'})
