@@ -3,13 +3,10 @@ import re
 import csv
 from bs4 import BeautifulSoup as BS
 
+startPage = 1
+endPage = 300
 
-numberOfPages = 300  # number of pages - 1
 
-
-NPList = list()
-Nlist = list()
-Plist = list()
 NPDict = dict()
 
 with open('NPfile.csv', 'r') as NPfile:
@@ -18,7 +15,7 @@ with open('NPfile.csv', 'r') as NPfile:
         if line != []:
             NPDict[line[0]] = line[1]
 
-for i in range(300, numberOfPages):
+for i in range(startPage, endPage+1):
     NPList = list()
     Nlist = list()
     Plist = list()
@@ -39,9 +36,9 @@ for i in range(300, numberOfPages):
     for j in range(len(Ns)):
         a = re.sub(r'\D', '', Nlist[j])
         b = re.sub(r'\D', '', Plist[j])
-        if a and b != '' :
+        if a and b != '':
             if a.startswith('0') == False:
-                    a = '0' + a
+                a = '0' + a
             NPList.append([a, b])
 
     with open('NPfile.csv', 'a') as NPfile:
@@ -52,6 +49,6 @@ for i in range(300, numberOfPages):
                 NPDict[NP[0]] = NP[1]
                 writer.writerow(NP)
                 k += 1
-        print('New Item : %s'%(k))
-    print('New Total : %s'%(len(NPDict.values())))
+        print('New Item : %s' % (k))
+    print('New Total : %s' % (len(NPDict.values())))
     print('----------------------')
