@@ -9,7 +9,7 @@ NPDict = dict()
 NList = list()
 rawPList = list()
 Plist = list()
-with open('SimPy\\NPfile.csv', 'r') as NPfile:
+with open('NPfile.csv', 'r') as NPfile:
     csvReader = csv.reader(NPfile)
     for line in csvReader:
         if line != []:
@@ -47,7 +47,7 @@ print('%0.2f'%Model.score(X_train,y_train))
 print('%0.2f'%Model.score(X_test,y_test))
 saveCommand = input('Do you want to save the model?(y/n)  :   ')
 if saveCommand == 'y':
-    joblib.dump(Model,'SimPy\\SimPy.joblib')
+    joblib.dump(Model,'SimPy.joblib')
 # plt = plot_learning_curve(Model,'Learning Curve',X_train,y_train,train_sizes=[0.1,0.3,0.5,0.7,1])
 # plt.show()
 # score = cross_val_score(Model,X_train,y_train,cv=3)
