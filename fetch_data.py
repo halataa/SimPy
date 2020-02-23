@@ -2,14 +2,13 @@ import requests
 import re
 import csv
 from bs4 import BeautifulSoup as BS
+import random
 
 startPage = 1
 endPage = 500 # 500 recomended
-
-
 NPDict = dict()
 
-with open('NPfile.csv', 'r') as NPfile:
+with open('data\\dataset\\NPfile.csv', 'r') as NPfile:
     csvReader = csv.reader(NPfile)
     for line in csvReader:
         if line != []:
@@ -40,7 +39,7 @@ for i in range(startPage, endPage+1):
                 a = '0' + a
             NPList.append([a, b])
 
-    with open('NPfile.csv', 'a') as NPfile:
+    with open('data\\dataset\\NPfile.csv', 'a') as NPfile:
         writer = csv.writer(NPfile)
         k = 0
         for NP in NPList:
@@ -51,3 +50,9 @@ for i in range(startPage, endPage+1):
         print('New Item : %s' % (k))
     print('New Total : %s' % (len(NPDict.values())))
     print('----------------------')
+
+
+
+
+    
+
